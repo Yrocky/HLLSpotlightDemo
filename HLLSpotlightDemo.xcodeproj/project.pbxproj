@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		841088621C584C12000902C0 /* HLLSpotlight.m in Sources */ = {isa = PBXBuildFile; fileRef = 841088611C584C12000902C0 /* HLLSpotlight.m */; };
-		842ACEEC1C57152A0046E152 /* HLLTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 842ACEEB1C57152A0046E152 /* HLLTest.m */; };
+		5CE0839422EAC66900497103 /* EaseSpotlight.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE0839322EAC66900497103 /* EaseSpotlight.m */; };
+		5CE0839822EAC71700497103 /* EaseSpotlightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE0839722EAC71700497103 /* EaseSpotlightView.m */; };
+		5CE0839E22EACBD200497103 /* EaseSpotlightController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE0839D22EACBD200497103 /* EaseSpotlightController.m */; };
+		5CE083A122EAD13100497103 /* EaseTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE083A022EAD13100497103 /* EaseTestViewController.m */; };
 		84F203071C55C63F00C20323 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F203061C55C63F00C20323 /* main.m */; };
 		84F2030A1C55C63F00C20323 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F203091C55C63F00C20323 /* AppDelegate.m */; };
 		84F2030D1C55C63F00C20323 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F2030C1C55C63F00C20323 /* ViewController.m */; };
@@ -17,9 +19,6 @@
 		84F203151C55C63F00C20323 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F203131C55C63F00C20323 /* LaunchScreen.storyboard */; };
 		84F203201C55C63F00C20323 /* HLLSpotlightDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F2031F1C55C63F00C20323 /* HLLSpotlightDemoTests.m */; };
 		84F2032B1C55C63F00C20323 /* HLLSpotlightDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F2032A1C55C63F00C20323 /* HLLSpotlightDemoUITests.m */; };
-		84F2033A1C55C66500C20323 /* HLLSpotlightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F203391C55C66500C20323 /* HLLSpotlightViewController.m */; };
-		84F2033D1C55C6F200C20323 /* HLLSpotlightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F2033C1C55C6F200C20323 /* HLLSpotlightView.m */; };
-		84F203401C55CD6900C20323 /* HLLTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F2033F1C55CD6900C20323 /* HLLTransition.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,10 +39,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		841088601C584C12000902C0 /* HLLSpotlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLLSpotlight.h; sourceTree = "<group>"; };
-		841088611C584C12000902C0 /* HLLSpotlight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLSpotlight.m; sourceTree = "<group>"; };
-		842ACEEA1C57152A0046E152 /* HLLTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLLTest.h; sourceTree = "<group>"; };
-		842ACEEB1C57152A0046E152 /* HLLTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLTest.m; sourceTree = "<group>"; };
+		5CE0839222EAC66900497103 /* EaseSpotlight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EaseSpotlight.h; sourceTree = "<group>"; };
+		5CE0839322EAC66900497103 /* EaseSpotlight.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EaseSpotlight.m; sourceTree = "<group>"; };
+		5CE0839622EAC71700497103 /* EaseSpotlightView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EaseSpotlightView.h; sourceTree = "<group>"; };
+		5CE0839722EAC71700497103 /* EaseSpotlightView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EaseSpotlightView.m; sourceTree = "<group>"; };
+		5CE0839C22EACBD200497103 /* EaseSpotlightController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EaseSpotlightController.h; sourceTree = "<group>"; };
+		5CE0839D22EACBD200497103 /* EaseSpotlightController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EaseSpotlightController.m; sourceTree = "<group>"; };
+		5CE0839F22EAD13100497103 /* EaseTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EaseTestViewController.h; sourceTree = "<group>"; };
+		5CE083A022EAD13100497103 /* EaseTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EaseTestViewController.m; sourceTree = "<group>"; };
 		84F203021C55C63F00C20323 /* HLLSpotlightDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HLLSpotlightDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F203061C55C63F00C20323 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		84F203081C55C63F00C20323 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -60,12 +63,6 @@
 		84F203261C55C63F00C20323 /* HLLSpotlightDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HLLSpotlightDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F2032A1C55C63F00C20323 /* HLLSpotlightDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HLLSpotlightDemoUITests.m; sourceTree = "<group>"; };
 		84F2032C1C55C63F00C20323 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		84F203381C55C66500C20323 /* HLLSpotlightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLLSpotlightViewController.h; sourceTree = "<group>"; };
-		84F203391C55C66500C20323 /* HLLSpotlightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLSpotlightViewController.m; sourceTree = "<group>"; };
-		84F2033B1C55C6F200C20323 /* HLLSpotlightView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLLSpotlightView.h; sourceTree = "<group>"; };
-		84F2033C1C55C6F200C20323 /* HLLSpotlightView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLSpotlightView.m; sourceTree = "<group>"; };
-		84F2033E1C55CD6900C20323 /* HLLTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLLTransition.h; sourceTree = "<group>"; };
-		84F2033F1C55CD6900C20323 /* HLLTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLTransition.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +90,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5CE0839522EAC67100497103 /* Spotlight */ = {
+			isa = PBXGroup;
+			children = (
+				5CE0839222EAC66900497103 /* EaseSpotlight.h */,
+				5CE0839322EAC66900497103 /* EaseSpotlight.m */,
+				5CE0839622EAC71700497103 /* EaseSpotlightView.h */,
+				5CE0839722EAC71700497103 /* EaseSpotlightView.m */,
+				5CE0839C22EACBD200497103 /* EaseSpotlightController.h */,
+				5CE0839D22EACBD200497103 /* EaseSpotlightController.m */,
+			);
+			name = Spotlight;
+			sourceTree = "<group>";
+		};
 		84F202F91C55C63F00C20323 = {
 			isa = PBXGroup;
 			children = (
@@ -120,16 +130,9 @@
 				84F203091C55C63F00C20323 /* AppDelegate.m */,
 				84F2030B1C55C63F00C20323 /* ViewController.h */,
 				84F2030C1C55C63F00C20323 /* ViewController.m */,
-				841088601C584C12000902C0 /* HLLSpotlight.h */,
-				841088611C584C12000902C0 /* HLLSpotlight.m */,
-				84F2033B1C55C6F200C20323 /* HLLSpotlightView.h */,
-				84F2033C1C55C6F200C20323 /* HLLSpotlightView.m */,
-				84F203381C55C66500C20323 /* HLLSpotlightViewController.h */,
-				84F203391C55C66500C20323 /* HLLSpotlightViewController.m */,
-				84F2033E1C55CD6900C20323 /* HLLTransition.h */,
-				84F2033F1C55CD6900C20323 /* HLLTransition.m */,
-				842ACEEA1C57152A0046E152 /* HLLTest.h */,
-				842ACEEB1C57152A0046E152 /* HLLTest.m */,
+				5CE0839F22EAD13100497103 /* EaseTestViewController.h */,
+				5CE083A022EAD13100497103 /* EaseTestViewController.m */,
+				5CE0839522EAC67100497103 /* Spotlight */,
 				84F2030E1C55C63F00C20323 /* Main.storyboard */,
 				84F203111C55C63F00C20323 /* Assets.xcassets */,
 				84F203131C55C63F00C20323 /* LaunchScreen.storyboard */,
@@ -295,14 +298,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84F2033A1C55C66500C20323 /* HLLSpotlightViewController.m in Sources */,
-				84F203401C55CD6900C20323 /* HLLTransition.m in Sources */,
-				842ACEEC1C57152A0046E152 /* HLLTest.m in Sources */,
+				5CE083A122EAD13100497103 /* EaseTestViewController.m in Sources */,
+				5CE0839E22EACBD200497103 /* EaseSpotlightController.m in Sources */,
+				5CE0839422EAC66900497103 /* EaseSpotlight.m in Sources */,
 				84F2030D1C55C63F00C20323 /* ViewController.m in Sources */,
-				84F2033D1C55C6F200C20323 /* HLLSpotlightView.m in Sources */,
 				84F2030A1C55C63F00C20323 /* AppDelegate.m in Sources */,
 				84F203071C55C63F00C20323 /* main.m in Sources */,
-				841088621C584C12000902C0 /* HLLSpotlight.m in Sources */,
+				5CE0839822EAC71700497103 /* EaseSpotlightView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

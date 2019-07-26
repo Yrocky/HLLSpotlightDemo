@@ -9,8 +9,12 @@
 #import "ViewController.h"
 #define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
 #define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
-@interface ViewController ()
 
+#import "EaseTestViewController.h"
+
+@interface ViewController ()<EaseSpotlightControllerDelegate>
+
+@property (nonatomic ,strong) UIButton * easeButton;
 @end
 
 @implementation ViewController
@@ -19,6 +23,13 @@
 
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    self.easeButton = [UIButton new];
+    self.easeButton.backgroundColor = [UIColor orangeColor];
+    [self.easeButton addTarget:self action:@selector(onShowSpotlight)
+              forControlEvents:UIControlEventTouchUpInside];
+    self.easeButton.frame = CGRectMake(100, 300, 30, 30);
+    [self.view addSubview:self.easeButton];
+    
 //    [self addMask];
     return;
     UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
@@ -54,6 +65,20 @@
         [maskLayer addAnimation:animation forKey:nil];
     });
 }
+
+- (void) onShowSpotlight{
+    EaseTestViewController * test = [EaseTestViewController new];
+    test.delegate = self;
+    [self presentViewController:test animated:YES completion:nil];
+}
+
+#pragma mark - EaseSpotlightControllerDelegate
+
+- (void)easeSpotlightControllerDidTapNextStep:(EaseSpotlightController *)spotlightController{
+    NSLog(@"[Spotlight] next tap");
+
+}
+
 - (void)addMask{
     UIButton * _maskButton = [[UIButton alloc] init];
     [_maskButton setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];

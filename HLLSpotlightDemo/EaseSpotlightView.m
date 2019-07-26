@@ -1,18 +1,20 @@
 //
-//  HLLSpotlightView.m
+//  EaseSpotlightView.m
 //  HLLSpotlightDemo
 //
-//  Created by admin on 16/1/25.
-//  Copyright © 2016年 HLL. All rights reserved.
+//  Created by skynet on 2019/7/26.
+//  Copyright © 2019 HLL. All rights reserved.
 //
 
-#import "HLLSpotlightView.h"
+#import "EaseSpotlightView.h"
+#import "EaseSpotlight.h"
 
-@interface HLLSpotlightView ()
+@interface EaseSpotlightView ()
+@property (nonatomic ,strong ,readwrite) EaseSpotlight * spotlight;
 @property (nonatomic ,assign) NSTimeInterval defaultAnimationDuration;
 @property (nonatomic ,strong) CAShapeLayer * maskLayer;
 @end
-@implementation HLLSpotlightView
+@implementation EaseSpotlightView
 
 #pragma mark - cycle
 - (instancetype)initWithFrame:(CGRect)frame
@@ -38,13 +40,23 @@
 }
 
 - (void)layoutSubviews{
-
+    
     [super layoutSubviews];
     self.maskLayer.frame = self.bounds;
 }
 
-#pragma mark - function
-- (void) appearWithSpotlight:(HLLSpotlight *)spotlight duration:(NSTimeInterval)duration{
+#pragma mark - API
+- (void) setupInitialSpotlight:(EaseSpotlight *)initialSpotlight{
+    if (initialSpotlight) {
+        _spotlight = initialSpotlight;
+    }
+}
+
+- (void)appearInitialSpotlightWithDuration:(NSTimeInterval)duration{
+    [self appearWithSpotlight:nil duration:duration];
+}
+
+- (void) appearWithSpotlight:(nullable EaseSpotlight *)spotlight duration:(NSTimeInterval)duration{
     if (!spotlight) {
         spotlight = self.spotlight;
     }
@@ -52,28 +64,34 @@
     [self.maskLayer addAnimation:appearAnimaiton forKey:nil];
 }
 
-- (void) moveToSpotlight:(HLLSpotlight *)toSpotlight duration:(NSTimeInterval)duration moveType:(SpotlightMoveType)moveType{
-
-    if (moveType == SpotlightMoveDirect) {
+- (void) moveToSpotlight:(nonnull EaseSpotlight *)toSpotlight duration:(NSTimeInterval)duration moveType:(EaseSpotlightMoveType)moveType{
+    
+    if (!toSpotlight) {
+        NSLog(@"[Spotlight] toSpotlight 不能为nil");
+        return;
+    }
+    if (moveType == EaseSpotlightMoveDirect) {
         [self _moveDirectToSpotlight:toSpotlight duration:duration];
-
-    }else if(moveType == SpotlightMoveDisappear){
+        
+    }else if(moveType == EaseSpotlightMoveDisappear){
         [self _moveDisappearToSpotlight:toSpotlight duration:duration];
     }
 }
 - (void) disappearWithDuration:(NSTimeInterval)duration{
-
+    
     CAAnimation * disappearAnimation = [self disappearAnimationWithSpotlight:nil duration:duration];
     [self.maskLayer addAnimation:disappearAnimation forKey:nil];
 }
+
 #pragma mark - Private
-- (void) _moveDirectToSpotlight:(HLLSpotlight *)toSpotlight duration:(NSTimeInterval)duration{
+
+- (void) _moveDirectToSpotlight:(EaseSpotlight *)toSpotlight duration:(NSTimeInterval)duration{
     
     CAAnimation * moveAnimation = [self moveAnimationWithSpotlight:toSpotlight duration:duration];
     [self.maskLayer addAnimation:moveAnimation forKey:nil];
     self.spotlight = toSpotlight;
 }
-- (void) _moveDisappearToSpotlight:(HLLSpotlight *)toSpotlight duration:(NSTimeInterval)duration{
+- (void) _moveDisappearToSpotlight:(EaseSpotlight *)toSpotlight duration:(NSTimeInterval)duration{
     
     [CATransaction begin];
     [CATransaction setCompletionBlock:^{
@@ -85,7 +103,7 @@
 }
 // 追加path，为了显示镂空的效果，需要使用 -bezierPathByReversingPath- 方法在一个path上再追加一个path
 - (UIBezierPath *) _maskPath:(UIBezierPath *)path{
-
+    
     UIBezierPath * tempPath = [UIBezierPath bezierPathWithRect:self.frame];
     [tempPath appendPath:[path bezierPathByReversingPath]];
     return tempPath;
@@ -93,24 +111,24 @@
 
 #pragma mark - Layer Animation
 
-- (CAAnimation *) appearAnimationWithSpotlight:(HLLSpotlight *)spotlight duration:(NSTimeInterval)duration{
-
+- (CAAnimation *) appearAnimationWithSpotlight:(EaseSpotlight *)spotlight duration:(NSTimeInterval)duration{
+    
     UIBezierPath * beginPath = [self _maskPath:spotlight.infinitesmalPath];
-    UIBezierPath * endPath = [self _maskPath:spotlight.path];
+    UIBezierPath * endPath = [self _maskPath:spotlight.pathWrapper.path];
     return [self pathAnimaitonDuration:duration
                          withBeginPath:beginPath
                             andEndPath:endPath];
 }
 
-- (CAAnimation *) moveAnimationWithSpotlight:(HLLSpotlight *)spotlight duration:(NSTimeInterval)duration{
-
-    UIBezierPath * endPath = [self _maskPath:spotlight.path];
+- (CAAnimation *) moveAnimationWithSpotlight:(EaseSpotlight *)spotlight duration:(NSTimeInterval)duration{
+    
+    UIBezierPath * endPath = [self _maskPath:spotlight.pathWrapper.path];
     return [self pathAnimaitonDuration:duration
                          withBeginPath:nil
                             andEndPath:endPath];
 }
-- (CAAnimation *) disappearAnimationWithSpotlight:(HLLSpotlight *)spotlight duration:(NSTimeInterval)duration{
-
+- (CAAnimation *) disappearAnimationWithSpotlight:(EaseSpotlight *)spotlight duration:(NSTimeInterval)duration{
+    
     UIBezierPath * endPath = [self _maskPath:self.spotlight.infinitesmalPath];
     return [self pathAnimaitonDuration:duration
                          withBeginPath:nil
@@ -118,7 +136,7 @@
 }
 
 - (CAAnimation *) pathAnimaitonDuration:(NSTimeInterval)duration withBeginPath:(UIBezierPath *)beginPath andEndPath:(UIBezierPath *)endPath{
-
+    
     CABasicAnimation * pathAniamtion = [CABasicAnimation animationWithKeyPath:@"path"];
     if (!duration) {
         duration = self.defaultAnimationDuration;
@@ -134,14 +152,16 @@
     pathAniamtion.fillMode = kCAFillModeForwards;
     return pathAniamtion;
 }
+
 #pragma mark - lazy
-- (HLLSpotlight *)spotlight{
-    
+
+- (EaseSpotlight *)spotlight{
     if (!_spotlight) {
-        _spotlight = [[HLLSpotlight alloc] initSpotlightForOvalWithCenter:CGPointZero andWidth:100];
+        _spotlight = [EaseSpotlight initialSpotlight];
     }
     return _spotlight;
 }
+
 - (CAShapeLayer *)maskLayer{
     if (!_maskLayer) {
         _maskLayer = [CAShapeLayer layer];
@@ -151,3 +171,4 @@
     return _maskLayer;
 }
 @end
+
